@@ -6,7 +6,7 @@ function Navbar() {
     <div className="min-w-fit container ">
       <div className="navbar bg-[#27272F] rounded-xl ">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Design Studio</a>
+          <a className="btn btn-ghost text-xl">Design</a>
         </div>
         <div className="flex-none gap-2">
           <div className="form-control relative">

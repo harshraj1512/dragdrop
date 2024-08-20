@@ -4,6 +4,7 @@ import Draggable from "./components/Draggable"
 import Droppable from "./components/Droppable"
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import Mainhome from "./homes/Mainhome";
 
 
 
@@ -65,7 +66,7 @@ function App() {
     <>
     <div className="flex flex-col min-h-screen min-w-full max-h-screen">
     <Navbar/>
-    <Home/>
+    <Mainhome/>
     </div>
     </>
   );
