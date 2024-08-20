@@ -7,8 +7,8 @@ function Droppable(props) {
   });
 
   const style = isOver
-    ? "border-2 border-blue-500 bg-white w-80 h-80"
-    : "border-2 border-blue-500 bg-white w-80 h-80";
+    ? "border-2 border-blue-500 w-80 h-80"
+    : "border-2 border-blue-500  w-80 h-80";
 
   return (
     <div ref={setNodeRef} className={`${style} absolute bottom-0 right-0 m-4`}>

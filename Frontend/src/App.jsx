@@ -6,23 +6,52 @@ import Droppable from "./components/Droppable"
 
 
 function App() {
-  const [isDropped, setIsDropped] = useState(false);
-  const draggableMarkup = (
-    <Draggable>Drag me</Draggable>
-  );
+  const containers = ['A', 'B', 'C'];
+  const [parent, setParent] = useState({
+    draggable1: null, 
+    draggable2: null, 
+  });
+  // const draggableMarkup = (
+  //   <Draggable id="draggable">Drag me</Draggable>
+  // );
+
+  function handleDragEnd(event) {
+    const { over, active } = event;
+
+    
+    setParent((prev) => ({
+      ...prev,
+      [active.id]: over ? over.id : null,
+    }));
+  }
   return (
     <DndContext onDragEnd={handleDragEnd}>
-      {!isDropped ? draggableMarkup : null}
-      <Droppable>
-        {isDropped ? draggableMarkup : 'Drop here'}
-      </Droppable>
+      <div className="space-x-4">
+      {parent.draggable1 === null && (
+        <Draggable id="draggable1">Drag me</Draggable>
+      )}
+      {parent.draggable2 === null && (
+        <Draggable id="draggable2">Here</Draggable>
+      )}
+      </div>
+      {containers.map((id) => (
+        // We updated the Droppable component so it would accept an `id`
+        // prop and pass it to `useDroppable`
+        <Droppable key={id} id={id}>
+          {parent.draggable1 === id && (
+            <Draggable id="draggable1">Drag me</Draggable>
+          )}
+          {parent.draggable2 === id && (
+            <Draggable id="draggable2">Here</Draggable>
+          )}
+          {parent.draggable1 !== id &&
+            parent.draggable2 !== id &&
+            "Drop here"}
+        </Droppable>
+      ))}
     </DndContext>
   );
-  function handleDragEnd(event) {
-    if (event.over && event.over.id === 'droppable') {
-      setIsDropped(true);
-    }
-  }
+ 
 }
 
 export default App
