@@ -1,18 +1,18 @@
 import React from 'react'
 import { useDraggable } from '@dnd-kit/core'
 
-function Draggable({ id, children }) {
+function Draggable(prop) {
     const {attributes, listeners, setNodeRef, transform} = useDraggable({
-        id: id,
+        id: prop.id,
     });
     const style = transform ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
     } : undefined;
 
   return (
-    <button className="cursor-pointer select-none mb-2" ref={setNodeRef} style={style} {...listeners} {...attributes}>
-        {children}
-    </button>
+    <div className="cursor-pointer select-none mb-2" ref={setNodeRef} style={style} {...listeners} {...attributes}>
+        {prop.children}
+    </div>
   );
 }
 
