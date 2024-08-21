@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Sidebar from '../components/Sidebar'
 import Home from '../components/Home'
 import { DndContext, closestCorners } from '@dnd-kit/core'
+import Navbar from '../components/Navbar';
+import Publish from '../components/Publish';
 
 function Mainhome() {
   const [dropped, setDropped] = useState([]);
@@ -32,10 +34,14 @@ function Mainhome() {
 
   return (
     <DndContext collisionDetection={closestCorners} onDragEnd={handledrop}>
-    <div className='flex flex-row flex-grow '>
-        <Sidebar/>
-        <Home dropped={dropped}/>
+    <div className='flex flex-col flex-grow'>
+        <Navbar/>
+      <div className='flex flex-row flex-grow'>
+          <Sidebar />
+          <Home dropped={dropped} />
+        </div>
     </div>
+    <Publish dropped={dropped}/>
     </DndContext>
   )
 }

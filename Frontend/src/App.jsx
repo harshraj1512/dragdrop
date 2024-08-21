@@ -63,7 +63,7 @@ function App() {
   return (
     <>
     <div className="flex flex-col min-h-screen min-w-full max-h-screen">
-    <Navbar/>
+    {/* <Navbar/> */}
     <Mainhome/>
     </div>
     </>
