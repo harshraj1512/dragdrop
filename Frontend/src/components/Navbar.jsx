@@ -1,6 +1,10 @@
 import React from 'react'
+import Publish from './Publish';
 
 function Navbar() {
+  const openModal  = () => {
+    document.getElementById("my_modal_1").showModal();
+  };
   return (
     <>
     <div className="min-w-fit container ">
@@ -27,7 +31,7 @@ function Navbar() {
               <a>Load layout</a>
             </div>
           </button>
-          <button className="btn btn-ghost border-solid border-2 border-sky-500">
+          <button onClick={openModal} className="btn btn-ghost border-solid border-2 border-sky-500">
             <div className="indicator gap-2 items-center">
               <a>publish</a>
             </div>
@@ -35,6 +39,7 @@ function Navbar() {
         </div>
       </div>
     </div>
+    <Publish/>
   </>
   )
 }

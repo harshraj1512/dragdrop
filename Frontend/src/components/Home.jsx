@@ -13,10 +13,10 @@ function Home(props) {
 
 
   return (
-    <div ref={setNodeRef} className={`${style}  flex flex-col w-full border items-center justify-center m-2`}>
+    <div ref={setNodeRef} className={`${style}  flex flex-wrap gap-4 w-full border items-center justify-center m-2`}>
       {props.dropped.length === 0 && <h3>Drop</h3>}
       {props.dropped.map((item, index)=> (
-        <div key={index}>
+        <div className='m-2' key={index}>
           {item.content}
         </div>
       ))}
