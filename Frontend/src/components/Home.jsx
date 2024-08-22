@@ -1,14 +1,18 @@
 import React from 'react';
 import { useDroppable } from '@dnd-kit/core';
 
-function Home({ dropped }) { 
+function Home({ dropped, setDropped  }) { 
   console.log('Dropped items:', dropped);
 
   const { isOver, setNodeRef } = useDroppable({
     id: 'designer-drop-area',
   });
 
-  const renderComponent = (item) => {
+  const removeItem = (id) => {
+    setDropped((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const Component = (item) => {
     if (!item || !item.type || !item.content) {
       return null; 
     }
@@ -60,12 +64,18 @@ function Home({ dropped }) {
     >
       {dropped && dropped.length > 0 ? (
         dropped.map((item, index) => (
-          <div key={index} className="mb-4 ">
-            {renderComponent(item)}
+          <div key={index} className="m-4 text-center ">
+            {Component(item)}
+            <button
+              onClick={() => removeItem(item.id)}
+              className="text-red-500 hover:text-red-700 font-bold"
+            >
+              Remove
+            </button>
           </div>
         ))
       ) : (
-        <div>No items dropped</div>
+        <div >No items dropped</div>
       )}
     </div>
   );

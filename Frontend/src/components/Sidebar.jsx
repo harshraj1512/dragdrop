@@ -8,10 +8,10 @@ function Sidebar() {
         <label className='border-dashed border-2 w-40 text-center '>Label Box</label>
       </Draggable>
       <Draggable id="input1">
-        <input type="text" placeholder="Text Field" className="p-1 rounded text-black w-full border-2 border-dashed" />
+        <input type="text" placeholder="Text Field" className="p-1 rounded text-black w-40 border-2 border-dashed" />
       </Draggable>
       <Draggable id="checkbox1">
-        <div className="flex items-center w-full border-dashed border-2 w-28">
+        <div className="flex items-center w-40 border-dashed border-2 w-28">
           <input type="checkbox" className="mr-2 w-full " />
           <label>Checkbox</label>
         </div>

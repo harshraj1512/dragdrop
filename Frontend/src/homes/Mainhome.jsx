@@ -5,16 +5,18 @@ import { DndContext, closestCorners } from '@dnd-kit/core'
 import Navbar from '../components/Navbar';
 import Publish from '../components/Publish';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 function Mainhome() {
   const [dropped, setDropped] = useState([]);
+  const navigate = useNavigate();
 
   const handledrop = (event) => {
     const {active, over} = event;
 
     if(over && over.id === 'designer-drop-area'){
       const dragged ={
-        id: active.id,
+        id: Date.now(),
         type: active.id,
         content: getId(active.id),
       };
@@ -25,9 +27,9 @@ function Mainhome() {
 
   const getId = (id) =>{
     switch (id){
-      case 'label1': return { className: 'border-dashed border-2 w-40 text-center', children: 'Label Box' };
-      case 'input1': return { type: 'text', placeholder: 'Text Field', className: 'p-1 rounded text-black w-full border-2 border-dashed' };
-      case 'checkbox1': return { className: 'flex items-center w-full border-dashed border-2 w-28', children: 'Checkbox' };
+      case 'label1': return { className: 'border-dashed border-2 w-32 text-center', children: 'Label Box' };
+      case 'input1': return { type: 'text', placeholder: 'Text Field', className: 'p-1 rounded text-black w-32 border-2 border-dashed' };
+      case 'checkbox1': return { className: 'flex items-center w-full border-dashed border-2 w-32', children: 'Checkbox' };
       case 'button1': return { className: 'bg-blue-500 text-white py-2 px-4 border-dashed border-2 rounded', children: 'Button' };
       default: return null
     }
@@ -49,13 +51,17 @@ function Mainhome() {
     }
   };
 
+  const handlepublish = () => {
+    navigate('/publish', {state: {dropped}})
+  }
+
   return (
     <DndContext collisionDetection={closestCorners} onDragEnd={handledrop}>
     <div className='flex flex-col flex-grow'>
-        <Navbar saveLayout={saveLayout}/>
+        <Navbar saveLayout={saveLayout} handlepublish={handlepublish} />
       <div className='flex flex-row flex-grow'>
           <Sidebar />
-          <Home dropped={dropped} />
+          <Home dropped={dropped} setDropped={setDropped}/>
         </div>
     </div>
     </DndContext>

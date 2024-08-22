@@ -3,17 +3,14 @@ import Publish from './Publish';
 import { useNavigate } from 'react-router-dom';
 
 function Navbar(props) {
+  console.log(props);
   const navigate = useNavigate();
-  const openModal  = () => {
-    document.getElementById("my_modal_1").showModal();
-  };
+  
 
   const handlelayoutpage = () =>{
     navigate('/layout');
   };
-  const handlepublish = () => {
-    navigate('/publish')
-  }
+  
   return (
     <>
     <div className="min-w-fit container ">
@@ -40,7 +37,7 @@ function Navbar(props) {
               <a>Load layout</a>
             </div>
           </button>
-          <button onClick={handlepublish} className="btn btn-ghost border-solid border-2 border-sky-500">
+          <button onClick={props.handlepublish} className="btn btn-ghost border-solid border-2 border-sky-500">
             <div className="indicator gap-2 items-center">
               <a>publish</a>
             </div>
