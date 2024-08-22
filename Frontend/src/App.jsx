@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Mainhome from "./homes/Mainhome";
 import LayoutPage from "./components/LayoutPage";
+import Publish from "./components/Publish";
 
 
 
@@ -67,6 +68,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Mainhome/>}/>
       <Route path="/layout" element={<LayoutPage/>}/>
+      <Route path="/publish" element={<Publish/>}/>
     </Routes>
     </div>
     </>

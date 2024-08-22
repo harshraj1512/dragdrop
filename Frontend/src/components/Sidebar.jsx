@@ -19,7 +19,6 @@ function Sidebar() {
       <Draggable id="button1">
         <button className="bg-blue-500 text-white py-2 px-4 border-dashed border-2 rounded">Button</button>
       </Draggable>
-
     </div>
   );
 }

@@ -10,6 +10,9 @@ function Navbar(props) {
 
   const handlelayoutpage = () =>{
     navigate('/layout');
+  };
+  const handlepublish = () => {
+    navigate('/publish')
   }
   return (
     <>
@@ -37,7 +40,7 @@ function Navbar(props) {
               <a>Load layout</a>
             </div>
           </button>
-          <button onClick={openModal} className="btn btn-ghost border-solid border-2 border-sky-500">
+          <button onClick={handlepublish} className="btn btn-ghost border-solid border-2 border-sky-500">
             <div className="indicator gap-2 items-center">
               <a>publish</a>
             </div>
@@ -45,7 +48,7 @@ function Navbar(props) {
         </div>
       </div>
     </div>
-    <Publish/>
+    
   </>
   )
 }
