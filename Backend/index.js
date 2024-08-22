@@ -1,10 +1,15 @@
 import  express  from "express"
 import mongoose from "mongoose"
-const app = express()
+import cors from 'cors'
+import SingleRouter from "./Routes/singlelayout.route.js"
+
+const app = express();
+app.use(cors());
+app.use(express.json());
 const port = 3000
 
 
-const URI = 'mongodb+srv://harshraj1512:firstdata1@cluster0.oenyuou.mongodb.net/'
+const URI = 'mongodb+srv://harshraj1512:firstdata1@cluster0.oenyuou.mongodb.net/dropAdmin'
 
 // connect to DB
 try {
@@ -13,6 +18,8 @@ try {
 } catch (error) {
     console.log("Error: ", error);
 }
+
+app.use('/api/single',SingleRouter );
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

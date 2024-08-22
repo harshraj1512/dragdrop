@@ -1,7 +1,7 @@
 import React from 'react'
 import Publish from './Publish';
 
-function Navbar() {
+function Navbar(props) {
   const openModal  = () => {
     document.getElementById("my_modal_1").showModal();
   };
@@ -20,7 +20,7 @@ function Navbar() {
               className="input input-bordered w-24 md:w-auto"
             />
           </div>
-          <button className="btn btn-ghost border-solid border-2 border-sky-500">
+          <button onClick={props.saveLayout} className="btn btn-ghost border-solid border-2 border-sky-500">
             <div className="indicator gap-2 items-center">
               
               <a>Save Layout</a>
