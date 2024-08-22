@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { DndContext, closestCorners } from "@dnd-kit/core"
-
+import { Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Mainhome from "./homes/Mainhome";
+import LayoutPage from "./components/LayoutPage";
 
 
 
@@ -63,8 +64,10 @@ function App() {
   return (
     <>
     <div className="flex flex-col min-h-screen min-w-full max-h-screen">
-    {/* <Navbar/> */}
-    <Mainhome/>
+    <Routes>
+      <Route path="/" element={<Mainhome/>}/>
+      <Route path="/layout" element={<LayoutPage/>}/>
+    </Routes>
     </div>
     </>
   );

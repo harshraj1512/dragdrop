@@ -1,10 +1,16 @@
 import React from 'react'
 import Publish from './Publish';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar(props) {
+  const navigate = useNavigate();
   const openModal  = () => {
     document.getElementById("my_modal_1").showModal();
   };
+
+  const handlelayoutpage = () =>{
+    navigate('/layout');
+  }
   return (
     <>
     <div className="min-w-fit container ">
@@ -26,7 +32,7 @@ function Navbar(props) {
               <a>Save Layout</a>
             </div>
           </button>
-          <button className="btn btn-ghost border-solid border-2 border-sky-500">
+          <button onClick={handlelayoutpage} className="btn btn-ghost border-solid border-2 border-sky-500">
             <div className="indicator gap-2 items-center">
               <a>Load layout</a>
             </div>

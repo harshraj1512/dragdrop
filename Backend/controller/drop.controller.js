@@ -14,3 +14,18 @@ export const CreateDrop = async (req, res)=>{
         res.status(500).json({ message: 'Error saving layout' });
     }
 };
+
+// fetch
+export const getDrop = async (req, res) => {
+    try {
+        const layout = await Singlelayout.findOne({}).exec();
+        if (layout) {
+            res.status(200).json(layout.droppedItems);
+        } else {
+            res.status(404).json({ message: 'No layout found' });
+        }
+    } catch (error) {
+        console.error('Error fetching layout:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
